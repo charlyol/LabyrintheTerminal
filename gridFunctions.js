@@ -67,7 +67,7 @@ function useGridDimensions(columns, rows) {
 
   // Display the grid in the console as a table
   console.table(grid);
-  console.log("Start the game");
+  console.log(" Start the game");
   return grid;
 }
 
@@ -90,16 +90,17 @@ function gameLabyrinthe() {
   askDimensions((columns, rows) => {
     useGridDimensions(columns, rows);
     playerPosition = [2, 4];
-    if (playerPosition !== findGoalPosition()) {
+    console.log(" Player position  : " + "[" + playerPosition + "]", "\n", "Position of Goal : " + "[" + findGoalPosition() + "]");
+    if (playerPosition === findGoalPosition()) {
+      console.log("You win");
+    }
+    else {
       setTimeout(() => {
         moves++;
         console.table(grid);
         console.log(" Moves : ", moves, "\n", "Position of Goal : " + "[" + findGoalPosition() + "]");
         rl.close();
       }, 1000);
-    }
-    if (playerPosition === findGoalPosition()){
-    console.log("You win");
     }
   });
 }
